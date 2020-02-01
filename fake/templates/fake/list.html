@@ -1,0 +1,33 @@
+{% extends "fake/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "fake/effect.css" %}" type="text/css" />
+<link rel="stylesheet" href="{% static "fake/list.css" %}" type="text/css" />
+{% endblock %}
+{% block content %}
+<div id="title">
+	Hello, Fake!
+</div>
+<div id="body">
+	<ul class="images">
+			{% for img_path in img_paths %}
+			<li><img class="img-btn" src="{% static img_path %}" /></li>
+			{% endfor %}
+			{% for img_path in img_paths %}
+			<li><img class="img-btn" src="{% static img_path %}" /></li>
+			{% endfor %}
+			{% for img_path in img_paths %}
+			<li><img class="img-btn" src="{% static img_path %}" /></li>
+			{% endfor %}
+			{% for img_path in img_paths %}
+			<li><img class="img-btn" src="{% static img_path %}" /></li>
+			{% endfor %}
+			{% for img_path in img_paths %}
+			<li><img class="img-btn" src="{% static img_path %}" /></li>
+			{% endfor %}
+			{% for img_path in img_paths %}
+			<li><img class="img-btn" src="{% static img_path %}" /></li>
+			{% endfor %}
+	</table>
+</div>
+{% endblock %}

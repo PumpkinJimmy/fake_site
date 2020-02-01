@@ -1,0 +1,44 @@
+{% extends "fake/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "fake/table.css" %}" type="text/css" />
+<link rel="stylesheet" href="{% static "fake/effect.css" %}" type="text/css" />
+{% endblock %}
+{% block content %}
+<div id="title">
+	Hello, Fake!
+</div>
+<div id="body">
+	<form method="POST" >
+		{% csrf_token %}
+	<table class="images">
+		<tr>
+			{% for img_path in img_paths %}
+			<td><img class="img-btn" src="{% static img_path %}" /></td>
+			{% endfor %}
+		</tr>
+		<tr>
+			{% for img_path in img_paths %}
+			<td><img class="img-btn" src="{% static img_path %}" /></td>
+			{% endfor %}
+		</tr>
+		<tr>
+			{% for img_path in img_paths %}
+			<td><img class="img-btn" src="{% static img_path %}" /></td>
+			{% endfor %}
+		</tr>
+		<tr>
+			{% for img_path in img_paths %}
+			<td><img class="img-btn" src="{% static img_path %}" /></td>
+			{% endfor %}
+		</tr>
+		<tr>
+			{% for img_path in img_paths %}
+			<td><img class="img-btn" src="{% static img_path %}" /></td>
+			{% endfor %}
+		</tr>
+	</table>
+	<input class="submit-btn" type="submit" value="Submit"/>
+	</form>
+</div>
+{% endblock %}

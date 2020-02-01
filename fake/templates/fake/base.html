@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="{% static "fake/base.css" %}" type="text/css" />
+	{% block head %}
+	{% endblock %}
+</head>
+<body>
+	<title>{{ title }}</title>
+	<div id="content">
+	{% block content %}
+	{% endblock %}
+	</div>
+</body>
