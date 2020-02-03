@@ -1,4 +1,6 @@
 db.sqlite3
 __*
 manage.py
+migrations
+*.swp
 
