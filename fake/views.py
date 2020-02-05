@@ -6,7 +6,35 @@ from fake.models import Paper
 
 
 def home(request):
-    return render(request, 'fake/home.html', context={'title': 'Hello, Fake'})
+    return render(request, 'fake/home.html', context={'title': 'Hello, Fake!'})
+
+def test(request):
+    if request.method == 'GET':
+        uid = request.session['uid'] = request.GET.get('uid', "19351023")
+        mid = request.session['mid'] = request.GET.get('mid', "1")
+        request.session['answer'] = 'aabb'
+        return render(request, 'fake/test.html', context={
+            'title': 'Fake测试',
+            'uid': uid,
+            'mid': mid
+        })
+
+    elif request.method == 'POST':
+        # raise Exception("Breakpoint")
+        ans = request.session['answer']
+        res = request.POST['result']
+        cnt = len(ans)
+        true_cnt = sum((ans[i] == res[i] for i in range(cnt)))
+        paper = Paper(
+            uid=request.session['uid'],
+            mid=request.session['mid'],
+            cnt=cnt,
+            true_cnt=true_cnt)
+        paper.save()
+        return render(request, 'fake/result.html');
+        # return HttpResponse(request.session['answer'] + '<br />' + request.POST['result']);
+    else:
+        return render(request, 'fake/base.html', context={'title': 'Unknown method'})
 
 def table(request):
     if request.method == 'POST':
@@ -38,7 +66,7 @@ def form2(request):
         cnt = len(ans)
         true_cnt = sum((ans[i] == res[i] for i in range(cnt)))
         paper = Paper(
-            uid=request.session['uid'], 
+            uid=request.session['uid'],
             mid=request.session['mid'],
             cnt=cnt,
             true_cnt=true_cnt)
@@ -54,3 +82,4 @@ def form2(request):
                                                                      'home.png',
                                                                      'search.png',
                                                                      'tag.png']})
+

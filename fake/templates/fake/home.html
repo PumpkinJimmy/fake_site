@@ -1,22 +1,29 @@
 {% extends "fake/base.html" %}
-{% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static "fake/effect.css" %}" type="text/css" />
+	<script>
+		$(function(){
+			$('input[type="submit"]').click(function(e){
+				if (!$('#uid-input').val() || !$('#mid-input').val())
+				{
+					e.preventDefault();
+					alert("信息未填写完成");
+				}
+
+			});
+		});
+
+	</script>
 {% endblock %}
 {% block content %}
-<div id="title">
-	Hello, Fake!
-</div>
+<div id="title">{{ title }} </div>
 <div id="body">
-	<table class="images">
-		<tr>
-			<td><img class="img-btn" src="{% static "home.png" %}" /></td>
-			<td><img src="{% static "note.png" %}" /></td>
-		</tr>
-		<tr>
-			<td><img src="{% static "search.png" %}" /></td>
-			<td><img src="{% static "tag.png" %}" /></td>
-		</tr>
-	</table>
+	<form action='/fake/test'>
+		<table class="form">
+			<tr><td>学号</td><td><input type='text' name="uid" id="uid-input" /></td></tr>
+			<tr><td>测评模型</td><td><input type='text' name="mid" id="mid-input" /></td></tr>
+			
+		</table>
+		<input class="submit-btn" type="submit" value="提交" />
+	</form>
 </div>
 {% endblock %}

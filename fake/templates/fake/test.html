@@ -1,0 +1,24 @@
+{% extends "fake/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "fake/effect.css" %}" type="text/css" />
+<script src="{% static "fake/base.js"%}"></script>
+{% endblock %}
+{% block content %}
+<div id="title">
+	{{ title }}
+</div>
+<div id="body">
+	下面每一个框内有一幅真图一幅假图，请选出其中你认为是<strong>假的</strong>一幅。
+	<form id="qform" method="POST" action="">
+		{% csrf_token %}
+		{% for img_path1, img_path2 in img_paths %}
+		<div id="qbox-{{ forloop.counter }}" class="qbox">
+			<img class="img-btn" src="{% static img_path1 %}" />
+			<img class="img-btn" src="{% static img_path2 %}" />
+		</div>
+		{% endfor %}
+	<input class="submit-btn" type="submit" value="Submit"/>
+	</form>
+</div>
+{% endblock %}

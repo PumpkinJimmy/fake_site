@@ -1,0 +1,22 @@
+{% extends "fake/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static "fake/effect.css" %}" type="text/css" />
+{% endblock %}
+{% block content %}
+<div id="title">
+	Hello, Fake!
+</div>
+<div id="body">
+	<table class="images">
+		<tr>
+			<td><img class="img-btn" src="{% static "home.png" %}" /></td>
+			<td><img src="{% static "note.png" %}" /></td>
+		</tr>
+		<tr>
+			<td><img src="{% static "search.png" %}" /></td>
+			<td><img src="{% static "tag.png" %}" /></td>
+		</tr>
+	</table>
+</div>
+{% endblock %}

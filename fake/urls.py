@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^list/$', views.lst, name='list'),
     url(r'^form/$', views.form, name='form'),
     url(r'^form2/$', views.form2, name='form2'),
+    url(r'^test/$', views.test, name='test'),
 ]
